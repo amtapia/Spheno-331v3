@@ -1,0 +1,207 @@
+RunScans = {   }; 
+ 
+(*----------------------------------------------*) 
+(*   SETUP                                      *) 
+(*----------------------------------------------*) 
+
+(* Define location, in- and output of SPheno *) 
+ 
+LoadSettings="DefaultSettings.m.331v3";  
+ 
+(* ----------------------- DARKMATTER ------------------------*) 
+ 
+(* Set to True to include MicrOmegas *) 
+ 
+DEFINITION[a_][IncludeMicrOmegas]=False; 
+ 
+(* ------------------------- CALCHEP -------------------------*) 
+ 
+(* Set to True to include CalcHep *) 
+DEFINITION[a_][IncludeCalcHep]=False; 
+(* Define processes *) 
+DEFINITION[a_][CalcHepRuns]={{"DIRECTORY","COMMAND","FILE"},... }; 
+ 
+(* ------------------------- WHIZARD ------------------------- *) 
+ 
+(* Set to True to include WHIZARD *) 
+ DEFINITION[a_][IncludeWHIZARD]=False; 
+(* Define processes *) 
+DEFINITION[a_][WHIZARDruns]={"InputFile",... }; 
+ 
+(*----------------------------------------------*)
+(*    INCLUDE FIT                               *)
+(*----------------------------------------------*)
+
+(*  
+(* Define Constraints *) 
+DEFINITION[a_][FitValues]={{Parameter,Value,Error},...}; 
+(* Free parameters *) 
+DEFINITION[FITHIGGS][FreeParameters]={{Parameter,{Min,Max}}}; 
+*) 
+(*----------------------------------------------*)
+(*    INCLUDE CONTOUR SCAN                      *)
+(*----------------------------------------------*)
+
+(*  
+ DEFINITION[a_][CountourScan]={z-Value,{x-Value,min,max},{y-Value,min,max},OPTIONS,"FILENAME"}; 
+*) 
+(*----------------------------------------------*)
+(*    NAMES FOR DIFFERENT SCANS                 *)
+(*----------------------------------------------*)
+
+RunScans = {Scan1, Scan2,...}; 
+ 
+(*----------------------------------------------*)
+(*    PARAMETER RANGES                          *)
+(*----------------------------------------------*)
+
+DEFINITION[a_][Blocks]={MODSEL,SMINPUTS,SPhenoInput,MINPAR,GAUGEIN,HD1IN,HD2IN,HD3IN,HDP1IN,HDP11IN,HDT1IN,HDT2IN,HDT3IN,HDTP1IN,HDTP11IN,HLL1IN,HU1IN,HU11IN,HU12IN,HU2IN,HUP1IN,HUP11IN,HUP2IN,HUP21IN,POTENTIAL331IN}; 
+ 
+DEFINITION[a_][MODSEL]={ 
+{{1},{Value->0}}, 
+{{2},{Value->1}}, 
+{{6},{Value->1}} 
+}; 
+DEFINITION[a_][SMINPUTS]={ 
+{{2},{Value->1.166390*10^-5}}, 
+{{3},{Value->0.1172}}, 
+{{4},{Value->91.18760}}, 
+{{5},{Value->4.2}}, 
+{{6},{Value->172.9}}, 
+{{7},{Value->1.777}} 
+}; 
+DEFINITION[a_][MINPAR]={ 
+{{1},{Value->0}} (*Lambda1IN*), 
+{{2},{Value->0}} (*Lambda2IN*), 
+{{3},{Value->0}} (*Lambda3IN*), 
+{{4},{Value->0}} (*Lambda12IN*), 
+{{5},{Value->0}} (*Lambda13IN*), 
+{{6},{Value->0}} (*Lambda23IN*), 
+{{7},{Value->0}} (*Lambda12TIN*), 
+{{8},{Value->0}} (*Lambda13TIN*), 
+{{9},{Value->0}} (*Lambda23TIN*), 
+{{10},{Value->0}} (*fInput*), 
+{{11},{Value->0}} (*VnIN*), 
+{{12},{Value->0}} (*v1IN*)}; 
+ 
+DEFINITION[a_][SPhenoInput]={ 
+{{1},{Value->-1}}, (* error level *)
+{{2},{Value->0}},  (* SPA conventions *) 
+{{11},{Value->1}}, (* Calculate widhts and BRs *)
+{{12},{Value->0.0001}}, (* minimal BR to write out *) 
+{{13},{Value->1}}, (* Enable 3-body decays *) 
+{{34},{Value->0.0001}}, (* precision of masses *) 
+{{38},{Value->2}}, (* 1/2 - Loop RGEs *) 
+{{51},{Value->0}}, (* Switch to CKM matrix *) 
+{{55},{Value->1}}, (* 1 - Loop masses *)
+{{57},{Value->1}}, (* low energy constraints *)
+{{65},{Value->1}}, (* Solution tadpole equation *)
+{{66},{Value->1}}, (* two-scale matching *) 
+{{67},{Value->1}}, (* EFT Higgs *) 
+{{75},{Value->1}}, (* Write WHIZARD files *) 
+{{76},{Value->1}},  (* Write HiggsBounds files *) 
+{{86},{Value->0.}},  (* Maximal width to be counted as invisible in Higgs decays; -1: only LSP *) 
+{{530},{Value->1.}}  (* Write Blocks for Vevacious *) 
+}; 
+DEFINITION[a_][GAUGEIN]={ 
+{{1},{Value->0}}  (*g1*) , 
+{{2},{Value->0}}  (*g2*) , 
+{{3},{Value->0}}  (*g3*) }; 
+ 
+DEFINITION[a_][HU1IN]={ 
+{{1},{Value->0}}  (*hU1*) }; 
+ 
+DEFINITION[a_][HU2IN]={ 
+{{1},{Value->0}}  (*hU2*) }; 
+ 
+DEFINITION[a_][HUP1IN]={ 
+{{1},{Value->0}}  (*hUp1*) }; 
+ 
+DEFINITION[a_][HUP2IN]={ 
+{{1},{Value->0}}  (*hUp2*) }; 
+ 
+DEFINITION[a_][POTENTIAL331IN]={ 
+{{19},{Value->0}}  (*v2*) }; 
+ 
+DEFINITION[a_][HD1IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+DEFINITION[a_][HD2IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+DEFINITION[a_][HD3IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+DEFINITION[a_][HDP1IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+DEFINITION[a_][HDP11IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+DEFINITION[a_][HDT1IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} }; 
+ 
+DEFINITION[a_][HDT2IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} }; 
+ 
+DEFINITION[a_][HDT3IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} }; 
+ 
+DEFINITION[a_][HDTP1IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} }; 
+ 
+DEFINITION[a_][HDTP11IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} }; 
+ 
+DEFINITION[a_][HLL1IN]={ 
+{{1,1},{Value->0}} , 
+{{1,2},{Value->0}} , 
+{{1,3},{Value->0}} , 
+{{2,1},{Value->0}} , 
+{{2,2},{Value->0}} , 
+{{2,3},{Value->0}} , 
+{{3,1},{Value->0}} , 
+{{3,2},{Value->0}} , 
+{{3,3},{Value->0}} }; 
+ 
+DEFINITION[a_][HU11IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+DEFINITION[a_][HU12IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+DEFINITION[a_][HUP11IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+DEFINITION[a_][HUP21IN]={ 
+{{1},{Value->0}} , 
+{{2},{Value->0}} , 
+{{3},{Value->0}} }; 
+ 
+(*----------------------------------------------*)
+(*    PLOTS                                     *)
+(*----------------------------------------------*) 
+
+DEFINITION[a_][Plots]={ 
+}; 
